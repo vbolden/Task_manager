@@ -1,75 +1,25 @@
-# React + TypeScript + Vite
+## Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Build a Task Management application that demonstrates dynamic list rendering, proper key usage, and conditional rendering.
 
-Currently, two official plugins are available:
+### Useful resources
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React dev (https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)
+- React dev (https://react.dev/reference/react/useState)
+- MDN (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring)
 
-## React Compiler
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+#### Built with
 
-Note: This will impact Vite dev & build performances.
+- CSS custom properties
+- [React] - TypeScript
 
-## Expanding the ESLint configuration
+## Reflection
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. By using the id number as the key, which won't change even if the task is deleted or updated.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. I noticed in the example that the filters weren't really working together so in the code I added a function to combine the filters instead of one filter replacing the other. 
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. Instead of modifying the existing tasks array directly, I created a new array using the map() method and updated only the task that matched the given id. I also, passed the onStatusChange function as a prop to the TaskItem.tsx component to keep the state centralized in the parent component.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4. One challenge I faced was handling empty states correctly. I had to add a condition to check when the filtered list was empty and display a message instead. This required making sure the condition was applied after filtering so the Ui accurately reflected the selected filters. 
