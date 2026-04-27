@@ -24,11 +24,12 @@ function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps) {
 
             <p>{task.description}</p>
 
-            <div className='task-footer'></div>
-            <span className={`priority ${task.priority}`}>
-                Priority: {task.priority} </span>
-            <span className='due-date'>
-                Due: {task.dueDate}</span>
+            <div className='task-footer'>
+                <span className={`priority ${task.priority}`}>
+                    Priority: {task.priority} </span>
+                <span className='due-date'>
+                    Due: {task.dueDate}</span>
+            </div>
 
         </div>
     )
