@@ -29,3 +29,40 @@ h1 {
     border: 1px solid #B7D5D4;
     cursor: pointer;
 }
+
+.task-card {
+    background-color: #305252;
+    color: #B7D5D4;
+    border: 1px solid #B7D5D4;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-actions select {
+    background-color: #B7D5D4;
+    color: #373E40;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
+.status-actions button {
+    background: none;
+    border: none;
+    color: #B7D5D4;
+    padding: 5px 8px;
+    cursor: pointer;
+}
