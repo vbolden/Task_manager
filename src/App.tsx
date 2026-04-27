@@ -33,6 +33,34 @@ const newTasks: Task[] = [
 
 function App() {
 
+  const [tasks, setTasks] = useState(newTasks)
+  
+  const [filters, setFilters] = useState<{
+    status?: TaskStatus;
+    priority?: string;
+  }>({});
+
+  // HANDLE STATUS CHANGE
+  const handleStatusChange = (id: string, newStatus: TaskStatus) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, status: newStatus } : task
+      )
+    )
+  }
+
+  // HANDLE DELETE
+  const handleDelete = (id: string) => {
+    setTasks(prev => prev.filter(task => task.id !== id));
+  };
+
+  // APPLY FILTERS
+  const filteredTasks = tasks.filter((task) => {
+    return (
+      (!filters.status || task.status === filters.status) &&
+      (!filters.priority || task.priority === filters.priority)
+    )
+  });
 
   return (
     <div>
