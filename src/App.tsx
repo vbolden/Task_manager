@@ -34,7 +34,7 @@ const newTasks: Task[] = [
 function App() {
 
   const [tasks, setTasks] = useState(newTasks)
-  
+
   const [filters, setFilters] = useState<{
     status?: TaskStatus;
     priority?: string;
@@ -64,7 +64,19 @@ function App() {
 
   return (
     <div>
+      <h1>Task List</h1>
 
+      <TaskFilter
+        onFilterChange={newFilters =>
+          setFilters(prev => ({ ...prev, ...newFilters }))
+        }
+      />
+
+      <TaskList
+        tasks={filteredTasks}
+        onStatusChange={handleStatusChange}
+        onDelete={handleDelete}
+      />
     </div>
   )
 }
