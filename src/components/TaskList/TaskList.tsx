@@ -2,8 +2,32 @@ import TaskItem from '../TaskItem/TaskItem';
 import type {TaskListProps, TaskStatus} from '../../types';
 import {useState} from 'react';
 
-function TaskList() {
-    
+function TaskList({tasks, onStatusChange, onDelete}: TaskListProps) {
+    // SET STATE
+    const [filter, setFilter] = useState('all');
+
+    // FILTERING LOGIC
+    const filteredTasks = filter === 'all' 
+    ? tasks 
+    : tasks.filter((task) => task.status === filter)
+
+    // RENDER UI FOR TASKLIST
+    return(
+        <div>
+            <h2>Task List</h2>
+
+            {/* FILTER UI */}
+            <select 
+            onChange={(e) => setFilter(e.target.value)}
+            >
+                <option value="all-statues">All Statues</option>
+                <option value="pending">Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+    )
+
 }
 
 export default TaskList;
