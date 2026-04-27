@@ -2,7 +2,7 @@ import type { TaskFilterProps } from "../../types";
 
 function TaskFilter({onFilterChange}: TaskFilterProps) {
     return (
-        <div>
+        <div className="filter-container">
             <select 
             onChange={(e) => 
                 onFilterChange({
