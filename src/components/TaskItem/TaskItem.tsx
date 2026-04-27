@@ -16,6 +16,7 @@ function TaskItem({task, onStatusChange, onDelete}: TaskItemProps) {
                 onChange={(e) =>
                     onStatusChange(task.id, e.target.value as TaskStatus)
                 } >
+                    <option value="all">All</option>
                     <option value="pending">Pending</option>
                     <option value="in-progress">In Progress</option>
                     <option value="completed">Completed</option>
