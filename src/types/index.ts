@@ -15,7 +15,7 @@ export interface TaskListProps {
     onDelete: (taskId: string) => void;
 }
 
-export interface TaskItemsProps {
+export interface TaskItemProps {
     task: Task;
     onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
     onDelete: (taskId: string) => void;
